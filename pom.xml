@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>minimalcode-reflect</artifactId>
+    <version>0.5.2-SNAPSHOT</version>
+    <name>minimalcode-reflect</name>
+    <packaging>jar</packaging>
+    <description>Minimalistic reflection and introspection functionality for JavaBean</description>
+    <url>http://github.com/minimalcode-org/minimalcode-reflect</url>
+
+    <parent>
+        <groupId>org.minimalcode</groupId>
+        <artifactId>minimalcode-parent</artifactId>
+        <version>0.5.1</version>
+    </parent>
+
+    <properties>
+        <cglib.version>3.1</cglib.version>
+    </properties>
+
+    <scm>
+        <url>https://github.com/minimalcode-org/minimalcode-reflect</url>
+        <connection>scm:git:git@github.com:minimalcode-org/minimalcode-reflect.git</connection>
+        <developerConnection>scm:git:git@github.com:minimalcode-org/minimalcode-reflect.git</developerConnection>
+    </scm>
+
+    <dependencies>
+        <dependency>
+            <groupId>cglib</groupId>
+            <artifactId>cglib</artifactId>
+            <version>${cglib.version}</version>
+            <optional>true</optional>
+            <scope>compile</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <!-- Reflect test scope contains some handful utils -->
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>2.6</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>test-jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

@@ -84,12 +84,11 @@ for(Property property : bean.getDeclaredProperties()) {
 
 ```java
 Object obj = new Book();
-Bean<?> bean = Bean.forClass(object.getClass());
+Bean<?> bean = Bean.forClass(obj.getClass());
 Property title = bean.getProperty("title");
 
 // if property exists
 if (title != null) {
-
 	// Write
 	if (title.isWritable()) {
 		title.set(obj, "new-title");
@@ -97,7 +96,8 @@ if (title != null) {
 	
 	// Read
 	if (title.isReadable()) {
-		System.out.println(title + " has value " + (String) title.get(obj) + " in " + obj);
+		String value = (String) title.get(obj);
+		System.out.println(title.getName() + " has value " + value + " in " + obj);
 	}
 	
 	// Raw accessors and field
@@ -123,7 +123,6 @@ Property pages = Bean.forClass(Book.class).getProperty("pages");
 
 // if property exists
 if (pages != null) {
-
 	Class<?> type = pages.getType();// List
 	Type genericType = pages.getGenericType();// ParameterizedType
 	Class<?> actualType = pages.getActualType();// Resolved element Type: String
@@ -170,7 +169,7 @@ for(Property property : Bean.forClass(Book.class).getProperties()) {
 
 That's all... Less is more.
 
-### Links
+### MinimalCode Beans
 
-Minimalcode Reflect is a low-level API. For a more developer-friendly API, Spring's BeanWrapper-alike and Apache BeanUtils-alike, see the MinimalCode Beans project:
+Minimalcode Reflect is a low-level API. For a more developer-friendly reflection API see the **MinimalCode Beans** project:
 * [https://github.com/minimalcode-org/minimalcode-beans](https://github.com/minimalcode-org/minimalcode-beans)
